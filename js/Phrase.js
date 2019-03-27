@@ -12,16 +12,8 @@ class Phrase {
     addPhraseToDisplay() {
         //get random phrase from Game object
         let randomPhrase = game.getRandomPhrase();
-        //select main div
-        const mainDiv = document.querySelector(".main-container");
-        //create a NEW div
-        const div = document.createElement("div");
-        //create a ul
-        const ul = document.createElement("ul");
-        //append NEW div inside MAIN div
-        mainDiv.appendChild(div);
-        //append the ul inside NEW div
-        div.appendChild(ul);
+        //select the UL under the phrase div to display letters on
+        const phraseUL = document.querySelector("#phrase ul");
         //loop thru the random phrase
         for (let i = 0; i < randomPhrase.length; i++) {
             //create an li for each letter after splitting the phrase
@@ -29,15 +21,11 @@ class Phrase {
             li.textContent = randomPhrase.split("")[i];
             //add 'hide' and 'letter' classes to the letters
             li.className = "hide letter";
-            ul.appendChild(li);
+            phraseUL.appendChild(li);
             //if there is a space in the phrase add class 'space' to the space li
             if (randomPhrase.split("")[i] === " ") {
                 li.className = "space";
             }
         }
-        //add ID and Class to new div
-        div.id = "phrase";
-        div.className = "section";
     }
-}
 }

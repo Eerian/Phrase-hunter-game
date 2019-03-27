@@ -21,4 +21,12 @@ class Game {
         let randomNum = Math.floor(Math.random() * game.phrases.length);
         return game.phrases[randomNum];
     }
+    startGame() {
+        const overlayDiv = document.querySelector("#overlay");
+        overlayDiv.style.display = "none";
+
+        const randomPhrase = this.getRandomPhrase();
+        const phrase = new Phrase(randomPhrase);
+        phrase.addPhraseToDisplay();
+    }
 }
