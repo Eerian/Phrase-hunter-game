@@ -11,7 +11,8 @@ class Phrase {
      */
     addPhraseToDisplay() {
         //get random phrase from Game object
-        let randomPhrase = game.getRandomPhrase();
+        // const randomPhrase = game.getRandomPhrase();
+        const randomPhrase = this.phrase;
         //select the UL under the phrase div to display letters on
         const phraseUL = document.querySelector("#phrase ul");
         //loop thru the random phrase
@@ -28,4 +29,23 @@ class Phrase {
             }
         }
     }
+
+    /**
+     * Checks if passed letter is in phrase
+     * @param (string) letter - Letter to check
+     */
+    checkLetter(letter) {
+        if (this.phrase.includes(letter)) {
+            console.log("letter exists");
+        } else {
+            console.log("letter doesn't exist");
+        }
+    };
+    /**
+     * Displays passed letter on screen after a match is found
+     * @param (string) letter - Letter to display
+     */
+    showMatchedLetter(letter) {
+
+    };
 }
