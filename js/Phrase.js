@@ -3,49 +3,62 @@
  * Phrase.js */
 class Phrase {
     constructor(phrase) {
-        this.phrase = phrase.toLowerCase();
-    }
-
-    /**
-     * Display phrase on game board
-     */
+            this.phrase = phrase;
+        }
+        /**
+         * Display phrase on game board
+         */
     addPhraseToDisplay() {
         //get random phrase from Game object
-        // const randomPhrase = game.getRandomPhrase();
-        const randomPhrase = this.phrase;
+        let chosenPhrase = this.phrase;
         //select the UL under the phrase div to display letters on
         const phraseUL = document.querySelector("#phrase ul");
         //loop thru the random phrase
-        for (let i = 0; i < randomPhrase.length; i++) {
+        for (let i = 0; i < chosenPhrase.length; i++) {
             //create an li for each letter after splitting the phrase
             const li = document.createElement("li");
-            li.textContent = randomPhrase.split("")[i];
+            li.textContent = chosenPhrase.split("")[i];
             //add 'hide' and 'letter' classes to the letters
             li.className = "hide letter";
             phraseUL.appendChild(li);
             //if there is a space in the phrase add class 'space' to the space li
-            if (randomPhrase.split("")[i] === " ") {
+            if (chosenPhrase.split("")[i] === " ") {
                 li.className = "space";
             }
         }
     }
 
-    /**
-     * Checks if passed letter is in phrase
-     * @param (string) letter - Letter to check
-     */
     checkLetter(letter) {
         if (this.phrase.includes(letter)) {
-            console.log("letter exists");
+            return true;
         } else {
-            console.log("letter doesn't exist");
+            return false;
         }
-    };
-    /**
-     * Displays passed letter on screen after a match is found
-     * @param (string) letter - Letter to display
-     */
-    showMatchedLetter(letter) {
+    }
 
-    };
+    // showMatchedLetter() {
+    //   const allLetters = document.querySelectorAll(".key");
+    //   allLetters.forEach(letter => {
+    //     letter.addEventListener("click", e => {
+    //       let selectedLetter = e.target.textContent;
+    //       const phraseLetters = document.querySelectorAll("li.hide");
+    //       phraseLetters.forEach(letter => {
+    //         if (letter === selectedLetter) {
+    //           letter.classList.remove("hide");
+    //           letter.classList.add("show");
+    //         }
+    //       });
+    //     });
+    //   });
+    // }
+
+    showMatchedLetter(letter) {
+        const phraseLetters = document.querySelectorAll("li.hide");
+        phraseLetters.forEach(phraseLetter => {
+            if (phraseLetter.textContent === letter) {
+                phraseLetter.classList.remove("hide");
+                phraseLetter.classList.add("show");
+            }
+        });
+    }
 }
