@@ -36,25 +36,27 @@ class Phrase {
         }
     }
 
-    // showMatchedLetter() {
-    //   const allLetters = document.querySelectorAll(".key");
-    //   allLetters.forEach(letter => {
-    //     letter.addEventListener("click", e => {
-    //       let selectedLetter = e.target.textContent;
-    //       const phraseLetters = document.querySelectorAll("li.hide");
-    //       phraseLetters.forEach(letter => {
-    //         if (letter === selectedLetter) {
-    //           letter.classList.remove("hide");
-    //           letter.classList.add("show");
-    //         }
-    //       });
-    //     });
-    //   });
-    // }
+    /**
+     * Checks if passed letter is in phrase
+     * @param (string) letter - Letter to check
+     */
+    checkLetter(letter) {
+        if (this.phrase.includes(letter)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
+    /**
+     * Displays passed letter on screen after a match is found
+     * @param (string) letter - Letter to display
+     */
     showMatchedLetter(letter) {
+        //select all hidden letters
         const phraseLetters = document.querySelectorAll("li.hide");
         phraseLetters.forEach(phraseLetter => {
+            //if a letter matches a phrase letter show it.
             if (phraseLetter.textContent === letter) {
                 phraseLetter.classList.remove("hide");
                 phraseLetter.classList.add("show");
